@@ -1,0 +1,41 @@
+@media screen and (max-width: 720px) {
+    .content {
+        padding: 0 10px !important;
+    }
+}
+
+.container {
+    height: calc(100vh - 55px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #F7F9FA;
+
+}
+
+.content {
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 0 30px;
+
+
+    max-width: 900px;
+    width: 100%;
+    height: calc(100vh - 55px);
+
+    .title {
+        width: 100%;
+
+        p {
+            text-align: center;
+            font-weight: 500;
+        }
+    }
+
+
+}

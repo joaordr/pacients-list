@@ -1,0 +1,132 @@
+@media screen and (max-width: 720px) {
+    .container {
+        th {
+            font-size: 11pt !important;
+        }
+    }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-height: calc(100vh - 300px);
+    min-height: 200px !important;
+    overflow: auto;    
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #C3CFD9;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: black;
+        border-radius: 30px;
+    }
+
+    table {
+        border: none;
+        width: 100%;
+        // background: #9EADBA;
+        text-align: center;
+
+        border-left: 1px solid #9EADBA;
+        border-collapse: separate;
+        border-spacing: 0;
+
+        thead {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #C3CFD9;
+
+            tr {
+                background: #C3CFD9;
+
+                th {
+                    border-bottom: 1px solid #9EADBA;
+                    font-weight: bold;
+                    padding: 7px 5px;
+                    font-size: 13pt;
+                }
+
+                th:nth-child(1) {
+                    border-right: 1px solid #9EADBA;
+                    width: 100%;
+
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        cursor: pointer;
+                        background: #9EADBA;
+                    }
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        justify-content: space-between;
+
+                        span {
+                            display: flex;
+                        }
+
+                        p {
+                            width: 100%;
+                            padding-left: 13px;
+                            user-select: none;
+                        }
+                    }
+
+                }
+
+                th:nth-child(2) {
+                    border-right: 1px solid #9EADBA;
+
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        cursor: pointer;
+                        background: #9EADBA;
+                    }
+
+                    div {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row;
+                        justify-content: space-between;
+
+                        span {
+                            display: flex;
+                        }
+
+                        p {
+                            width: 100%;
+                            padding-right: 5px;
+                            padding-left: 5px;
+                            user-select: none;
+                        }
+                    }
+                }
+
+                th:nth-child(3) {
+                    border-right: 1px solid #9EADBA;
+                    width: 15%;
+                }
+
+                th:nth-child(4) {
+                    width: 15%;
+                }
+
+            }
+        }
+
+        tbody {
+            width: 100%;
+        }
+    }
+
+}

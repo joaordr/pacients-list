@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+    padding-bottom: 1rem;
+
+    max-width: 1136px;
+    width: 100%;
+
+    p {
+        margin: 0 1rem;
+    }
+
+    button {
+        display: flex;
+        background: none;
+        border-radius: 100px;
+        border: 1px solid rgba(51, 51, 51, 0.2);
+        box-sizing: border-box;
+        padding: 10px;
+
+        &+button {
+            margin-left: 5px;
+        }
+
+        transition: border 0.3s;
+
+        &:hover {
+            cursor: pointer;
+            border: 1px solid rgba(51, 51, 51, 1);
+        }
+
+        &:disabled {
+            cursor: default;
+            border: 1px solid rgba(51, 51, 51, 0.2);
+        }
+    }
+}
