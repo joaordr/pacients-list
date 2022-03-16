@@ -1,12 +1,20 @@
 
-## Getting Started
+## EXECUTANDO O PROJETO
 
-First, run the development server:
+Primeiro, execute o comando a seguir para instalar as dependencias
+
+```bash
+npm install
+# ou
+yarn
+```
+
+Para visualizar o projeto em execução execute o comando a seguir:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) No seu navegador para ver o resultado.
