@@ -5,6 +5,7 @@ import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { PacientsContext } from '../../../contexts/PacientsContext';
 
 import styles from './map.module.scss';
+import Loader from '../../Loader';
 
 const containerStyle = {
     width: '100%',
@@ -45,14 +46,7 @@ function Map() {
                     />
                     <></>
                 </GoogleMap>
-
-
-
-            ) : (
-                <div className={styles.loader_container}>
-                    <div className={styles.loader}></div>
-                </div>
-            )}
+            ) : (<Loader />)}
         </div>
     )
 }

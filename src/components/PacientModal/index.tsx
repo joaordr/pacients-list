@@ -105,7 +105,7 @@ export default function PacientModal() {
 
                         </div>
                         <div id="copied_message" className={styles.copied_message}>
-                            <p>Copiado Para área de transferência</p>
+                            <p>Copiado para área de transferência</p>
                         </div>
                     </div>
 

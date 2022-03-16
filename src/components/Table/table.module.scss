@@ -7,11 +7,10 @@
 }
 
 .container {
-    position: relative;
-    display: flex;
+    position: relative;    
     width: 100%;
     max-height: calc(100vh - 300px);
-    min-height: 200px !important;
+    // min-height: 200px !important;
     overflow: auto;    
 
     &::-webkit-scrollbar {
@@ -25,6 +24,14 @@
     &::-webkit-scrollbar-thumb {
         background-color: black;
         border-radius: 30px;
+    }
+
+    .no_return {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 13pt;
     }
 
     table {

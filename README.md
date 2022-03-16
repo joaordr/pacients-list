@@ -1,7 +1,8 @@
+Challenge by Coodesh
 
 ## EXECUTANDO O PROJETO
 
-Primeiro, execute o comando a seguir para instalar as dependencias
+Primeiro, execute o comando a seguir para instalar as dependências
 
 ```bash
 npm install
