@@ -1,6 +1,42 @@
+@media screen and (max-width: 720px) {
+    .ReactModal__Content {
+        padding: 0 8px;
+    }
+
+    .content {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .contacts {
+        grid-template-columns: repeat(1, 1fr) !important;
+        p {
+            border: none !important;
+        }
+    }
+}
+
+.copied_message {
+    position: fixed;
+    bottom: 15%;
+
+    visibility: hidden;    
+
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    border-radius: 15px;
+
+    transition: visibility 0.3s;
+
+    p {
+        color: white;
+    }
+    
+}
+
 .container {
     display: flex;
-    // padding: 2rem;
     padding-top: 0;
     display: flex;
     flex-direction: column;
@@ -55,8 +91,6 @@
     .content {
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
 
         padding-top: 80px;
         padding-left: 20px;
@@ -64,7 +98,7 @@
         padding-bottom: 20px;
 
         width: 100%;
-        height: 400px;
+        // height: 400px;
         background-color: #F7F9FA;
         border-radius: 5px;
 
@@ -91,7 +125,7 @@
             }
 
             // infos
-            div:nth-child(1) {
+            .infos {
                 width: 100%;
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -110,7 +144,7 @@
             }
 
             // contacts
-            div:nth-child(2) {
+            .contacts {
                 width: 100%;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -129,30 +163,48 @@
             }
 
             // adress
-            div:nth-child(3) {
+            .adress {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                grid-template-columns: repeat(2, 1fr);
                 margin-bottom: 10px;
+
+                .adress_description {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                    margin-bottom: 5px;
+
+                    div:nth-child(1) {
+                        max-width: 80px;
+                        width: 100%;
+                        align-items: center;
+                        justify-content: center;
+
+                        p {
+                            font-weight: bold;
+                        }
+                    }
+
+                    div:nth-child(2) {
+                        flex-direction: column;
+                    }
+
+
+                }
+
 
                 p {
                     width: 100%;
                     text-align: left;
-                    &+p {
-                        // border-left: 1px solid #9EADBA;
-                    }
                 }
 
-                &+div {
-                    border-top: 1px solid #9EADBA;
-                    padding-top: 5px;
-                }
             }
 
 
             // share link
-            div {
+            .share {
                 margin-top: auto;
                 display: flex;
                 align-items: center;
@@ -173,7 +225,6 @@
                     font-size: 14pt;
                     background: none;
                     border: 1px solid rgba(51, 51, 51, 0.4);
-                    // border: none;
                     padding: 1px;
                     border-radius: 3px;
 
@@ -189,8 +240,6 @@
             }
         }
     }
-
-
 
 }
 
@@ -216,9 +265,7 @@
     max-width: 600px;
     width: 100%;
     background: #fff;
-    // box-shadow: 0px 16px 80px rgba(0, 0, 0, 0.32);
     border-radius: 4px;
-    max-height: 90vh;
     overflow-y: auto;
     outline: none;
 }
