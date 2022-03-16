@@ -10,6 +10,7 @@ type PacientContextData = {
     handlePreviousPage: () => void;
     ordenateByName: () => void;
     ordenateByGender: () => void;
+    handleFilterByName: (value: string) => void;
     activePage: number;
     activeSeed: string;
     activePacient: any;
@@ -33,6 +34,7 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
     const router = useRouter();
 
     const [pacients, setPacients] = useState([]);
+    const [pacientsControl, setPacientsControl] = useState([]);
     const [activePage, setActivePage] = useState(0);
     const [activeSeed, setActiveSeed] = useState('');
     const [pages, setPages] = useState([]);
@@ -58,6 +60,7 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
                     }
                 }
                 setPacients(data.pacients);
+                setPacientsControl(data.pacients);
 
                 if (urlPacient != '') {
                     const pacient = data.pacients.find(element => element.login.uuid === urlPacient);
@@ -83,7 +86,12 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
         setActivePage(page);
     }
 
-    function filterByName() {
+    function handleFilterByName(value: string) {
+        setPacients(pacientsControl.filter((pacient) => {
+            if (pacient.name.first.toLowerCase().startsWith(value.toLowerCase()) || pacient.name.last.toLowerCase().startsWith(value.toLowerCase())) {
+                return pacient;
+            }
+        }))
     }
 
     function ordenateByName() {
@@ -118,7 +126,7 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
     }
 
     return (
-        <PacientsContext.Provider value={{ pacients, activePage, activePacient, setActivePacient, activeSeed, setActiveSeed, handleSelectPacient, handleSetActivePacientById, pages, isLoading, isFetching, handleNextPage, handlePreviousPage, ordenateByName, ordenateByGender }}>
+        <PacientsContext.Provider value={{ pacients, activePage, activePacient, setActivePacient, activeSeed, setActiveSeed, handleSelectPacient, handleFilterByName, handleSetActivePacientById, pages, isLoading, isFetching, handleNextPage, handlePreviousPage, ordenateByName, ordenateByGender }}>
             {children}
         </PacientsContext.Provider>
     )
