@@ -39,28 +39,5 @@
 
     }
 
-    div:nth-child(2) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        div:nth-child(1) {
-            display: flex;
-            flex-direction: column;
-            padding-right: 10px;
-            align-items: flex-end;
-        }
-
-        div:nth-child(2) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #DFE6ED;
-            width: 45px;
-            height: 45px;
-            border-radius: 50px;
-            color: #ADBAC6;
-        }
-
-    }
+    
 }

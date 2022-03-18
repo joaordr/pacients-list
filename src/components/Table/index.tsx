@@ -10,15 +10,13 @@ import styles from './table.module.scss';
 export default function Table() {
     const { pacients, ordenateByName, ordenateByGender, isLoading, isFetching } = useContext(PacientsContext);
     useEffect(() => {
-        if(pacients.length == 0 && !isLoading && !isFetching){
-            document.getElementById('table_container').style.minHeight = "0px";
-        }
         if (isLoading || isFetching) {
             document.getElementById('table_container').scrollTop = 0;
             document.getElementById('table_container').style.overflow = "hidden";
             document.getElementById('table_container').style.minHeight = "200px";
         } else {
             document.getElementById('table_container').style.overflow = "auto";
+            document.getElementById('table_container').style.minHeight = "0px";
         }
     }, [isLoading, isFetching, pacients]);
     return (

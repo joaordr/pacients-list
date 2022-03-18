@@ -1,10 +1,10 @@
 import { AppProps } from 'next/app';
+import { SessionProvider } from "next-auth/react"
 
 import { QueryClientProvider } from 'react-query'
 import { PacientsProvider } from '../contexts/PacientsContext'
 
 import { queryClient } from '../services/queryClient'
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 import '../styles/globals.scss';
 import styles from '../styles/Home.module.scss';
@@ -14,30 +14,32 @@ import Table from '../components/Table';
 import Pagination from '../components/Pagination';
 import PacientModal from '../components/PacientModal';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <PacientsProvider>
+    <SessionProvider session={session}>
+      <QueryClientProvider client={queryClient}>
+        <PacientsProvider>
 
-        <Header />
-        <div className={styles.container}>
-          <div className={styles.content}>
-            <div className={styles.title}>
-              <p>LISTAGEM DE PACIENTES</p>
+          <Header />
+          <div className={styles.container}>
+            <div className={styles.content}>
+              <div className={styles.title}>
+                <p>LISTAGEM DE PACIENTES</p>
+              </div>
+              <Search />
+              <Table />
+              <Pagination />
             </div>
-            <Search />
-            <Table />
-            <Pagination />
+            <PacientModal />
+
+            <Component {...pageProps} />
+
           </div>
-          <PacientModal />
 
-          <Component {...pageProps} />
+        </PacientsProvider>
+      </QueryClientProvider>
+    </SessionProvider>
 
-        </div>
-
-      </PacientsProvider>
-      {/* <ReactQueryDevtools /> */}
-    </QueryClientProvider>
 
   )
 }

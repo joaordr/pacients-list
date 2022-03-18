@@ -1,8 +1,6 @@
 import { useQuery, UseQueryOptions } from "react-query";
 import { api } from "../api";
 
-
-
 type GetPacientsResponse = {
     pacients: any[],
     responseSeed: string,

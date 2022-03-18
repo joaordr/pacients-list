@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div:nth-child(1) {
+        display: flex;
+        flex-direction: column;
+        padding-right: 10px;
+        align-items: flex-end;
+
+        p {
+            color: #44474b;
+        }
+
+        a {
+            color: #44474b;
+            &:hover {
+                color: red;
+            }
+        }
+    }
+
+    div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #DFE6ED;
+        width: 45px;
+        height: 45px;
+        border-radius: 50px;
+        color: #ADBAC6;
+
+        transition: border 0.3s;
+
+        img {
+            width: 100%;
+            border-radius: 50px;
+
+        }
+
+        &:hover {
+            cursor: pointer;
+            border: 1px solid rgba(51, 51, 51, 1);
+        }
+    }
+}
