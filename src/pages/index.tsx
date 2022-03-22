@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Router from 'next/router';
 import { useContext } from 'react';
-import { PacientsContext } from '../contexts/PacientsContext';
+import { PatientsContext } from '../contexts/PatientsContext';
 
 export default function Home() {
-  const { activeSeed, isLoading } = useContext(PacientsContext);
+  const { activeSeed, isLoading } = useContext(PatientsContext);
   if (!isLoading && activeSeed != '') {
     Router.push(`/${activeSeed}`, undefined, { shallow: true });
   }
