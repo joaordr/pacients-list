@@ -1,14 +1,14 @@
 import { useContext, useEffect } from 'react';
 import { RiArrowUpDownFill } from "react-icons/ri";
 
-import { PacientsContext } from '../../contexts/PacientsContext';
+import { PatientsContext } from '../../contexts/PatientsContext';
 import Loader from '../Loader';
 import TableRow from './TableRow';
 
 import styles from './table.module.scss';
 
 export default function Table() {
-    const { pacients, ordenateByName, ordenateByGender, isLoading, isFetching } = useContext(PacientsContext);
+    const { patients, ordenateByName, ordenateByGender, isLoading, isFetching } = useContext(PatientsContext);
     useEffect(() => {
         if (isLoading || isFetching) {
             document.getElementById('table_container').scrollTop = 0;
@@ -18,7 +18,7 @@ export default function Table() {
             document.getElementById('table_container').style.overflow = "auto";
             document.getElementById('table_container').style.minHeight = "0px";
         }
-    }, [isLoading, isFetching, pacients]);
+    }, [isLoading, isFetching, patients]);
     return (
         <div id="table_container" className={styles.container}>
             {(isLoading || isFetching) && <Loader />}
@@ -41,13 +41,13 @@ export default function Table() {
                 </thead>
                 <tbody>
 
-                    {pacients.map(pacient => {
-                        return <TableRow key={pacient.login.uuid} pacient={pacient} />
+                    {patients.map(patient => {
+                        return <TableRow key={patient.login.uuid} pacient={patient} />
                     })}
 
                 </tbody>
             </table>
-            {(pacients.length == 0 && !isLoading && !isFetching) && <p className={styles.no_return}>Nenhum registro encontrado</p>}
+            {(patients.length == 0 && !isLoading && !isFetching) && <p className={styles.no_return}>Nenhum registro encontrado</p>}
         </div>
 
     )

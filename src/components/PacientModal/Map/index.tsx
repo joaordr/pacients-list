@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
-import { PacientsContext } from '../../../contexts/PacientsContext';
+import { PatientsContext } from '../../../contexts/PatientsContext';
 
 import styles from './map.module.scss';
 import Loader from '../../Loader';
@@ -13,7 +13,7 @@ const containerStyle = {
 };
 
 function Map() {
-    const { activePacient } = useContext(PacientsContext);
+    const { activePatient } = useContext(PatientsContext);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -21,8 +21,8 @@ function Map() {
     })
 
     const position = {
-        lat: Number(activePacient.location.coordinates.latitude),
-        lng: Number(activePacient.location.coordinates.longitude),
+        lat: Number(activePatient.location.coordinates.latitude),
+        lng: Number(activePatient.location.coordinates.longitude),
     };
 
     const [map, setMap] = React.useState(null)

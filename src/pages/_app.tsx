@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import { SessionProvider } from "next-auth/react"
 
 import { QueryClientProvider } from 'react-query'
-import { PacientsProvider } from '../contexts/PacientsContext'
+import { PatientsProvider } from '../contexts/PatientsContext'
 
 import { queryClient } from '../services/queryClient'
 
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   return (
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
-        <PacientsProvider>
+        <PatientsProvider>
 
           <Header />
           <div className={styles.container}>
@@ -36,10 +36,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
 
           </div>
 
-        </PacientsProvider>
+        </PatientsProvider>
       </QueryClientProvider>
     </SessionProvider>
-
 
   )
 }

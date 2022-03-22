@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { PacientsContext } from "../../contexts/PacientsContext";
+import { PatientsContext } from "../../contexts/PatientsContext";
 
 import styles from './pagination.module.scss';
 
 export default function Pagination() {
-    const { handleNextPage, handlePreviousPage, activePage } = useContext(PacientsContext);
+    const { handleNextPage, handlePreviousPage, activePage } = useContext(PatientsContext);
 
     return (
         <div className={styles.container}>

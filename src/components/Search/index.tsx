@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { RiUserSearchFill } from "react-icons/ri";
-import { PacientsContext } from "../../contexts/PacientsContext";
+import { PatientsContext } from "../../contexts/PatientsContext";
 
 import styles from './search.module.scss';
 
 export default function Search() {
-    const { handleFilterByName, isLoading } = useContext(PacientsContext);
+    const { handleFilterByName, isLoading } = useContext(PatientsContext);
     useEffect(() => {
         if (isLoading) {
             let input = document.getElementById("search_box") as HTMLInputElement;

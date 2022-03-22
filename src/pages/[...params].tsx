@@ -2,19 +2,19 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
-import { PacientsContext } from '../contexts/PacientsContext';
+import { PatientsContext } from '../contexts/PatientsContext';
 
 export default function Pacients() {
     const router = useRouter();
-    const { activeSeed, setActiveSeed, activePacient, handleSetActivePacientById } = useContext(PacientsContext);
+    const { activeSeed, setActiveSeed, activePatient, handleSetActivePatientById } = useContext(PatientsContext);
 
     useEffect(() => {
         if (router.query.params != undefined) {
             if (activeSeed != router.query.params[0]) {
                 setActiveSeed(router.query.params[0]);
             }
-            if (router.query.params[1] != undefined && activePacient == null) {
-                handleSetActivePacientById(router.query.params[1]);
+            if (router.query.params[1] != undefined && activePatient == null) {
+                handleSetActivePatientById(router.query.params[1]);
             }
         }
     }, [router.query]);

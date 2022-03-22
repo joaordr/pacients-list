@@ -3,9 +3,9 @@ import { createContext, ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 
 import { useEffect } from "react";
-import { usePacients } from "../services/hooks/usePacients";
+import { usePatients } from "../services/hooks/usePatients";
 
-type PacientContextData = {
+type PatientContextData = {
     handleNextPage: () => void;
     handlePreviousPage: () => void;
     ordenateByName: () => void;
@@ -13,35 +13,35 @@ type PacientContextData = {
     handleFilterByName: (value: string) => void;
     activePage: number;
     activeSeed: string;
-    activePacient: any;
+    activePatient: any;
     setActiveSeed: (seed: string) => void;
-    handleSelectPacient: (pacient: any) => void;
-    handleSetActivePacientById: (uuid: string) => void;
-    setActivePacient: (pacient: any) => void;
-    pacients: any[];
+    handleSelectPatient: (pacient: any) => void;
+    handleSetActivePatientById: (uuid: string) => void;
+    setActivePatient: (pacient: any) => void;
+    patients: any[];
     pages: any[];
     isLoading: boolean;
     isFetching: boolean;
 }
 
-type PacientsProviderProps = {
+type PatientsProviderProps = {
     children: ReactNode;
 }
 
-export const PacientsContext = createContext({} as PacientContextData);
+export const PatientsContext = createContext({} as PatientContextData);
 
-export function PacientsProvider({ children }: PacientsProviderProps) {
+export function PatientsProvider({ children }: PatientsProviderProps) {
     const router = useRouter();
 
-    const [pacients, setPacients] = useState([]);
-    const [pacientsControl, setPacientsControl] = useState([]);
+    const [patients, setPatients] = useState([]);
+    const [patientsControl, setPatientsControl] = useState([]);
     const [activePage, setActivePage] = useState(0);
     const [activeSeed, setActiveSeed] = useState('');
     const [pages, setPages] = useState([]);
-    const [activePacient, setActivePacient] = useState(null);
-    const [urlPacient, setUrlPacient] = useState('');
+    const [activePatient, setActivePatient] = useState(null);
+    const [urlPatient, setUrlPatient] = useState('');
 
-    const { data, isLoading, isSuccess, isFetching, error, remove }: any = usePacients(activePage, (activePage > (pages.length - 1)) ? '' : pages[activePage]);
+    const { data, isLoading, isSuccess, isFetching, error, remove }: any = usePatients(activePage, (activePage > (pages.length - 1)) ? '' : pages[activePage]);
 
     const [isOrderByNameCrescent, setIsOrderByNameCrescent] = useState(true);
     const [isOrderByGender, setIsOrderByGender] = useState(true);
@@ -59,14 +59,14 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
                         setPages([...pages, data.responseSeed]);
                     }
                 }
-                setPacients(data.pacients);
-                setPacientsControl(data.pacients);
+                setPatients(data.patients);
+                setPatientsControl(data.patients);
 
-                if (urlPacient != '') {
-                    const pacient = data.pacients.find(element => element.login.uuid === urlPacient);
-                    if (pacient != undefined) {
-                        setActivePacient(pacient);
-                        setUrlPacient('');
+                if (urlPatient != '') {
+                    const patient = data.patients.find(element => element.login.uuid === urlPatient);
+                    if (patient != undefined) {
+                        setActivePatient(patient);
+                        setUrlPatient('');
                     } else {
                         router.replace(`/${data.responseSeed}`, undefined, { shallow: true });
                     }
@@ -87,48 +87,48 @@ export function PacientsProvider({ children }: PacientsProviderProps) {
     }
 
     function handleFilterByName(value: string) {
-        setPacients(pacientsControl.filter((pacient) => {
-            if (pacient.name.first.toLowerCase().startsWith(value.toLowerCase()) || pacient.name.last.toLowerCase().startsWith(value.toLowerCase())) {
-                return pacient;
+        setPatients(patientsControl.filter((patient) => {
+            if (patient.name.first.toLowerCase().startsWith(value.toLowerCase()) || patient.name.last.toLowerCase().startsWith(value.toLowerCase())) {
+                return patient;
             }
         }))
     }
 
     function ordenateByName() {
-        let array = [...pacients];
+        let array = [...patients];
         if (isOrderByNameCrescent) {
             array.sort((a, b) => a.name.first.localeCompare(b.name.first)); // crescente
         } else {
             array.sort((a, b) => b.name.first.localeCompare(a.name.first)); // decrecente
         }
         setIsOrderByNameCrescent(!isOrderByNameCrescent);
-        setPacients(array);
+        setPatients(array);
     }
 
     function ordenateByGender() {
-        let array = [...pacients];
+        let array = [...patients];
         if (isOrderByGender) {
             array.sort((a, b) => b.gender.localeCompare(a.gender)); // male
         } else {
             array.sort((a, b) => a.gender.localeCompare(b.gender)); // female
         }
         setIsOrderByGender(!isOrderByGender);
-        setPacients(array);
+        setPatients(array);
     }
 
-    function handleSelectPacient(pacient: any) {
-        setActivePacient(pacient);
-        router.replace(`/${data.responseSeed}/${pacient.login.uuid}`, undefined, { shallow: true });
+    function handleSelectPatient(patient: any) {
+        setActivePatient(patient);
+        router.replace(`/${data.responseSeed}/${patient.login.uuid}`, undefined, { shallow: true });
     }
 
-    async function handleSetActivePacientById(uuid: string) {
-        setUrlPacient(uuid);
+    async function handleSetActivePatientById(uuid: string) {
+        setUrlPatient(uuid);
     }
 
     return (
-        <PacientsContext.Provider value={{ pacients, activePage, activePacient, setActivePacient, activeSeed, setActiveSeed, handleSelectPacient, handleFilterByName, handleSetActivePacientById, pages, isLoading, isFetching, handleNextPage, handlePreviousPage, ordenateByName, ordenateByGender }}>
+        <PatientsContext.Provider value={{ patients, activePage, activePatient, setActivePatient, activeSeed, setActiveSeed, handleSelectPatient, handleFilterByName, handleSetActivePatientById, pages, isLoading, isFetching, handleNextPage, handlePreviousPage, ordenateByName, ordenateByGender }}>
             {children}
-        </PacientsContext.Provider>
+        </PatientsContext.Provider>
     )
 
 }

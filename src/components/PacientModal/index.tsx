@@ -11,18 +11,18 @@ import { BsFillTelephoneFill, BsGenderFemale, BsGenderMale, BsFillFlagFill, BsFi
 import { IoCalendarNumberSharp, IoCopy } from "react-icons/io5";
 
 
-import { PacientsContext } from '../../contexts/PacientsContext';
+import { PatientsContext } from '../../contexts/PatientsContext';
 
-import styles from './pacientModal.module.scss';
+import styles from './patientModal.module.scss';
 import Map from './Map';
 
 export default function PacientModal() {
     const router = useRouter();
 
-    const { activePacient, setActivePacient, activeSeed } = useContext(PacientsContext);
+    const { activePatient, setActivePatient, activeSeed } = useContext(PatientsContext);
     let birth;
-    if (activePacient != null) {
-        birth = new Date(activePacient.dob.date).toLocaleTimeString('pt-BR', {
+    if (activePatient != null) {
+        birth = new Date(activePatient.dob.date).toLocaleTimeString('pt-BR', {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
@@ -30,7 +30,7 @@ export default function PacientModal() {
     }
 
     function onRequestClose() {
-        setActivePacient(null);
+        setActivePatient(null);
         router.replace(`/${activeSeed}`, undefined, { shallow: true });
     }
 
@@ -47,39 +47,38 @@ export default function PacientModal() {
         setTimeout(() => {
             message.style.visibility = "hidden"
         }, 1500);
-
     }
 
     ReactModal.setAppElement('body');
     return (
         <>
             <ReactModal
-                isOpen={activePacient != null}
+                isOpen={activePatient != null}
                 onRequestClose={onRequestClose}
                 overlayClassName={styles.ReactModal__Overlay}
                 className={styles.ReactModal__Content}
             >
 
-                {activePacient != null ? (
+                {activePatient != null ? (
                     <div className={styles.container}>
                         <div className={styles.header}>
                             <div>
-                                <img src={activePacient.picture.large} alt="Profile picture" />
+                                <img src={activePatient.picture.large} alt="Profile picture" />
                             </div>
                             <button onClick={onRequestClose}><RiCloseLine /></button>
                         </div>
                         <div className={styles.content}>
-                            <p className={styles.name}>{activePacient.name.first} {activePacient.name.last}</p>
+                            <p className={styles.name}>{activePatient.name.first} {activePatient.name.last}</p>
                             <div>
                                 <div className={styles.infos}>
                                     <p><IoCalendarNumberSharp /> {birth}</p>
-                                    <p>{activePacient.gender === "male" ? <><BsGenderMale /> Masculino</> : <><BsGenderFemale /> Feminino</>}</p>
-                                    <p><BsFillFlagFill /> {activePacient.nat}</p>
+                                    <p>{activePatient.gender === "male" ? <><BsGenderMale /> Masculino</> : <><BsGenderFemale /> Feminino</>}</p>
+                                    <p><BsFillFlagFill /> {activePatient.nat}</p>
                                 </div>
 
                                 <div className={styles.contacts}>
-                                    <p><MdEmail /> {activePacient.email}</p>
-                                    <p><BsFillTelephoneFill /> {activePacient.phone}</p>
+                                    <p><MdEmail /> {activePatient.email}</p>
+                                    <p><BsFillTelephoneFill /> {activePatient.phone}</p>
                                 </div>
 
                                 <div className={styles.adress}>
@@ -88,8 +87,8 @@ export default function PacientModal() {
                                             <p>Endereço: </p>
                                         </div>
                                         <div>
-                                            <p>{activePacient.location.country} - {activePacient.location.state} - {activePacient.location.city} - código postal: {activePacient.location.postcode}</p>
-                                            <p>{activePacient.location.street.name}, n° {activePacient.location.street.number}</p>
+                                            <p>{activePatient.location.country} - {activePatient.location.state} - {activePatient.location.city} - código postal: {activePatient.location.postcode}</p>
+                                            <p>{activePatient.location.street.name}, n° {activePatient.location.street.number}</p>
                                         </div>
                                     </div>
 
