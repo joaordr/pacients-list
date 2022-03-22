@@ -12,7 +12,7 @@ import Header from '../components/Header';
 import Search from '../components/Search';
 import Table from '../components/Table';
 import Pagination from '../components/Pagination';
-import PacientModal from '../components/PacientModal';
+import PatientModal from '../components/PatientModal';
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
   return (
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }: AppProps) {
               <Table />
               <Pagination />
             </div>
-            <PacientModal />
+            <PatientModal />
 
             <Component {...pageProps} />
 
