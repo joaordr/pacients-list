@@ -1,4 +1,13 @@
-Challenge by Coodesh
+Challenge by Coodesh - https://lab.coodesh.com/public-challenges/front-end-challenge-2021#front-end-challenge-2021
+
+## 🛠 TECNOLOGIAS
+
+As seguintes ferramentas foram usadas na construção do projeto:
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React Modal](https://www.npmjs.com/package/react-modal)
+- [React Query](https://react-query.tanstack.com/)
+- [Google Maps API](https://developers.google.com/maps)
 
 ## EXECUTANDO O PROJETO
 
@@ -17,5 +26,5 @@ npm run dev
 # ou
 yarn dev
 ```
-
 Abra [http://localhost:3000](http://localhost:3000) No seu navegador para ver o resultado.
+
