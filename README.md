@@ -17,8 +17,6 @@
  <a href="#-licença">Licença</a>
 </p>
 
->>>>>>> 718874e046486e1af285dd49db8427e1735d2e86
-
 ## 💻 Sobre o projeto
 
 Projeto desenvolvido seguindo o desafio [Front-End Challenge 🏅 2021](https://lab.coodesh.com/public-challenges/front-end-challenge-2021#front-end-challenge-2021) da Coodesh.
