@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joaordr/patients-list?color=%2304D361">
 
@@ -17,6 +18,28 @@
  <a href="#-licença">Licença</a>
 </p>
 
+=======
+
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/joaordr/patients-list?color=%2304D361">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/joaordr/patients-list">
+  
+  <a href="https://github.com/joaordr/patients-list/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joaordr/patients-list">
+  </a>
+    
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
+
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> |
+ <a href="#-como-executar-o-projeto">Como executar</a> | 
+ <a href="#-tecnologias">Tecnologias</a> | 
+ <a href="#-licença">Licença</a>
+</p>
+
+>>>>>>> 718874e046486e1af285dd49db8427e1735d2e86
 
 ## 💻 Sobre o projeto
 
