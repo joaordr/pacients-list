@@ -57,14 +57,14 @@ describe('PacientModal component', () => {
         expect(screen.getByText('12/01/1989', { exact: false })).toBeInTheDocument();
     });
 
-    it('Not render if nobody pacient is selected', () => {
-        render(
+    it('Renders correctly if do not have patient selected', () => {
+        let activePatient = null;
+        const { container, debug } = render(
             <PatientsContext.Provider value={{ activePatient, setActivePatient, activeSeed } as any}>
                 <PacientModal />
             </PatientsContext.Provider>
         )
-
-        expect(screen.getByText('12/01/1989', { exact: false })).toBeInTheDocument();
+        expect(screen.queryByText('Jhon', { exact: false })).not.toBeInTheDocument();
     });
 
 })
